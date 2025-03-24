@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="food.png">
+  <title>FoodRecipes</title>
+  <link href="https://fonts.googleapis.com/css?family=Rock+Salt&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+   body {
+            font-family: Arial, sans-serif;
+            background-color: #F6FDC3;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #FFCF96;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header img {
+            height: 55px;
+        }
+        .header .logo {
+            display: flex;
+            align-items: center;
+        }
+        .header .logo h1 {
+            margin: 0;
+            margin-left: 10px;
+            font-size: 24px;
+            color: #000;
+        }
+        .header .search-bar {
+            display: flex;
+            align-items: center;
+        }
+        .header .search-bar input {
+            padding: 10px;
+            border-radius: 20px;
+            border: none;
+            width: 300px;
+        }
+        .header .search-bar button {
+            background: none;
+            border: none;
+            margin-left: -30px;
+            cursor: pointer;
+        }
+        .header .buttons {
+            display: flex;
+            align-items: center;
+            margin-left: 6px;
+        }
+        .header .buttons button {
+            background-color: #FF8080;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 20px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 36px;
+            color: #000000;
+            width: 100%; 
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .form-group {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .form-group label {
+            flex: 1;
+            font-size: 1.2em;
+            color: #333;
+        }
+        .form-group input, .form-group select {
+            flex: 2;
+            padding: 10px;
+            border: 2px solid #333;
+            border-radius: 20px;
+            font-size: 1em;
+            box-sizing: border-box;
+        }
+        .form-group input[type="file"] {
+            display: none;
+        }
+        .form-group .file-label {
+            flex: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            border: 2px solid #333;
+            border-radius: 20px;
+            font-size: 1em;
+            cursor: pointer;
+            background-color: white;
+            box-sizing: border-box;
+        }
+        .form-group .file-label i {
+            margin-right: 10px;
+        }
+        .form-group .radio-group {
+            display: flex;
+            gap: 20px;
+            flex: 2;
+        }
+        .form-group .radio-group input {
+            margin-right: 5px;
+        }
+        .form-group .radio-group label {
+            font-size: 1em;
+        }
+        .submit-button {
+            text-align: center;
+        }
+        .submit-button button {
+            background-color: #CDFADB;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 20px;
+            font-size: 14px;
+            cursor: pointer;
+            margin-left: 88%;
+            margin-top: 10px;  
+        }
+        .hidden {
+            display: none;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #FFD59A;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+  </style>
+ </head>
+ <body>
+  <div class="header">
+    <div class="logo">
+        <img height="50" src="food.png" width="55"/>
+        <h1 style="font-family: Rock Salt; font-size: 21px;">FoodRecipes</h1>
+       </div>
+   <div class="search-bar">
+    <input placeholder="ค้นหา" type="text"/>
+    <button><i class="fas fa-search"></i></button>
+    <div class="buttons">
+    <div class="dropdown">
+        <button class="black">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="15" height="15">
+                <path d="M0 93.7l183.6-25.3v177.4H0V93.7zm0 324.6l183.6 25.3V268.4H0v149.9zm203.8 28L448 480V268.4H203.8v177.9zm0-380.6v180.1H448V32L203.8 65.7z"/>
+            </svg>
+            ประเภท &nbsp;<i class="fas fa-caret-down"></i></button>
+        <div class="dropdown-content">
+         <a href="">ต้ม</a>
+         <a href="">ผัด</a>
+         <a href="">แกง</a>
+         <a href="">ทอด</a>
+         <a href="">ยำ</a>
+         <a href="">น้ำปั่น/สมูทตี้</a>
+        </div>
+       </div>
+       <button>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="15" height="15">
+            <path d="M441 58.9L453.1 71c9.4 9.4 9.4 24.6 0 33.9L424 134.1 377.9 88 407 58.9c9.4-9.4 24.6-9.4 33.9 0zM209.8 256.2L344 121.9 390.1 168 255.8 302.2c-2.9 2.9-6.5 5-10.4 6.1l-58.5 16.7 16.7-58.5c1.1-3.9 3.2-7.5 6.1-10.4zM373.1 25L175.8 222.2c-8.7 8.7-15 19.4-18.3 31.1l-28.6 100c-2.4 8.4-.1 17.4 6.1 23.6s15.2 8.5 23.6 6.1l100-28.6c11.8-3.4 22.5-9.7 31.1-18.3L487 138.9c28.1-28.1 28.1-73.7 0-101.8L474.9 25C446.8-3.1 401.2-3.1 373.1 25zM88 64C39.4 64 0 103.4 0 152L0 424c0 48.6 39.4 88 88 88l272 0c48.6 0 88-39.4 88-88l0-112c0-13.3-10.7-24-24-24s-24 10.7-24 24l0 112c0 22.1-17.9 40-40 40L88 464c-22.1 0-40-17.9-40-40l0-272c0-22.1 17.9-40 40-40l112 0c13.3 0 24-10.7 24-24s-10.7-24-24-24L88 64z"/>
+        </svg>
+        เขียนสูตร</button>
+    </div>
+   </div>
+  </div>
+  <div class="container">
+    <div class="form-group">
+    <br><h1>ลงทะเบียน</h1>
+    </div>
+   <form>
+    <div class="form-group">
+     <label for="username">ชื่อผู้ใช้</label>
+     <input id="username" name="username" type="text"/>
+    </div>
+    <div class="form-group">
+     <label for="email">Email</label>
+     <input id="email" name="email" type="email"/>
+    </div>
+    <div class="form-group">
+     <label for="password">รหัสผ่าน</label>
+     <input id="password" name="password" type="password"/>
+    </div>
+    <div class="form-group">
+     <label for="confirm-password">*ยืนยันรหัสผ่าน</label>
+     <input id="confirm-password" name="confirm-password" type="password"/>
+    </div>
+    <div class="form-group">
+     <label>สถานะการใช้งาน</label>
+     <div class="radio-group">
+      <label><input name="status" onclick="toggleWriterFields()" type="radio" value="reader"/>ผู้อ่าน</label>
+      <label><input id="writer" name="status" onclick="toggleWriterFields()" type="radio" value="writer"/>ผู้เขียน</label>
+     </div>
+    </div>
+    <div class="form-group writer-field hidden">
+        <h2>ข้อมูลส่วนตัว</h2>
+    </div>
+    <div class="form-group writer-field hidden">
+     <label for="lastname">ชื่อ-สกุล</label>
+     <input id="lastname" name="lastname" type="text"/>
+    </div>
+    <div class="form-group writer-field hidden">
+     <label for="dob">ว/ด/ปเกิด</label>
+     <input id="dob" name="dob" type="date"/>
+    </div>
+    <div class="form-group writer-field hidden">
+     <label for="phone">เบอร์โทรศัพท์</label>
+     <input id="phone" name="phone" type="tel"/>
+    </div>
+    <div class="form-group writer-field hidden">
+     <label for="personal-email">Email</label>
+     <input id="personal-email" name="personal-email" type="email"/>
+    </div>
+    <div class="form-group writer-field hidden">
+     <label for="id-number">เลขบัตรประจำตัวประชาชน</label>
+     <input id="id-number" name="id-number" type="text"/>
+    </div>
+    <div class="form-group writer-field hidden">
+     <label for="id-card">สำเนาบัตรประชาชน</label>
+     <input id="id-card" name="id-card" type="file"/>
+     <label class="file-label" for="id-card"><i class="fas fa-download"></i>choose a file</label>
+    </div>
+    <div class="form-group writer-field hidden">
+        <h2>ข้อมูลบัญชีธนาคาร</h2>
+    </div>
+    <div class="form-group writer-field hidden">
+     <label for="bank-name">ชื่อบัญชีธนาคาร</label>
+     <input id="bank-name" name="bank-name" type="text"/>
+    </div>
+    <div class="form-group writer-field hidden">
+     <label for="bank-account">เลขที่บัญชีธนาคาร</label>
+     <input id="bank-account" name="bank-account" type="text"/>
+    </div>
+    <div class="form-group writer-field hidden">
+     <label for="branch-code">รหัสสาขา</label>
+     <input id="branch-code" name="branch-code" type="text"/>
+    </div>
+    <div class="form-group writer-field hidden">
+     <label for="bank-doc">สำเนาบัญชีธนาคาร</label>
+     <input id="bank-doc" name="bank-doc" type="file"/>
+     <label class="file-label" for="bank-doc"><i class="fas fa-download"></i>choose a file</label>
+    </div>
+    <div class="submit-button">
+        <a href="covenant.html">
+            <button type="button">ตกลง</button>
+        </a>
+    </div>
+   </form>
+  </div>
+  <script>
+    function toggleWriterFields() {
+             var writerFields = document.querySelectorAll('.writer-field');
+             var writerRadio = document.getElementById('writer');
+             writerFields.forEach(function(field) {
+                 if (writerRadio.checked) {
+                     field.classList.remove('hidden');
+                 } else {
+                     field.classList.add('hidden');
+                 }
+             });
+         }
+   </script>
+ </body>
+</html>
